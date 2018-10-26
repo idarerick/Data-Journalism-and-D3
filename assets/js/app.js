@@ -20,10 +20,10 @@ var svg = d3
 	.append("svg")
 	.attr("width", svgWidth)
 	.attr("height", svgHeight);
+	.attr("transform", `translate(${chartMargin.left}, ${chartMargin.top})`)
 
 // Append a group to the SVG area and shift ('translate') it to the right and to the bottom
 var chartGroup = svg.append("g")
-  .attr("transform", `translate(${chartMargin.left}, ${chartMargin.top})`);
 
 // Initial Params
 var chosenXAxis = "income";
@@ -45,7 +45,6 @@ d3.csv("../data/data.csv", function(error, dataset) {
 
 	// parse data
 	dataset.forEach(function(data) {
-		data.abbr = +data.abbr;
 		data.income = +data.income;
 		data.obesity = +data.obesity;
 	});
